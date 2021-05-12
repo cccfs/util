@@ -16,6 +16,7 @@ func RunCommand(command string) string {
 	err := cmd.Run()
 	if err != nil {
 		fmt.Errorf(fmt.Sprint(err) + ": " + stderr.String())
+		return stderr.String()
 	}
 	return strings.Trim(stdout.String(), "\n")
 }
