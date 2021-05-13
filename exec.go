@@ -2,9 +2,9 @@ package util
 
 import (
 	"bytes"
-	"fmt"
-	"strings"
+	"github.com/fatih/color"
 	"os/exec"
+	"strings"
 )
 
 func RunCommand(command string) string {
@@ -15,7 +15,8 @@ func RunCommand(command string) string {
 	cmd.Stderr = &stderr
 	err := cmd.Run()
 	if err != nil {
-		fmt.Errorf(fmt.Sprint(err) + ": " + stderr.String())
+		//fmt.Errorf(fmt.Sprint(err) + ": " + stderr.String())
+		color.HiRed("%s : %s", err, stderr.String())
 		return stderr.String()
 	}
 	return strings.Trim(stdout.String(), "\n")
